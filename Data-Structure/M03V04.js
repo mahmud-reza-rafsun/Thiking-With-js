@@ -1,24 +1,24 @@
-class Queue {
+class Stack {
     constructor() {
         this.items = [];
     }
     // O(1)
-    enqueue(value) {
+    push(value) {
         this.items.push(value)
     }
-    // O(n) liner time complexity
-    dequeue() {
+    // O(1)
+    pop() {
         if (this.isEpmty()) {
             return undefined;
         }
-        return this.items.shift();
+        return this.items.pop();
     }
     // O(1)
     peek() {
         if (this.isEpmty()) {
             return undefined;
         }
-        return this.items[0];
+        return this.items[this.items.length - 1];
     }
     // O(1)
     isEpmty() {
@@ -26,16 +26,18 @@ class Queue {
     }
     // O(n)
     print() {
-        console.log(this.items.join(" -> "));
+        console.log(this.items.slice().reverse().join(" -> "));
     }
 }
 
-const queue = new Queue();
+const stack = new Stack();
 
-queue.enqueue(10);
-queue.enqueue(20);
-console.log(queue.peek());
-queue.enqueue(30);
-console.log(queue.peek());
+stack.push(10)
+stack.push(20)
+stack.push(30)
 
-queue.print();
+
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
