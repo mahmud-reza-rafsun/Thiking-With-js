@@ -83,6 +83,18 @@ class LinkedList {
   // remove function
 
   remove(index) {
+    if (index === 0) {
+      const removedItem = this.head.value;
+      this.head = this.head.next;
+
+      if (this.length === 0) {
+        this.tail === null;
+      }
+
+      this.length++;
+      return removedItem;
+    }
+
     const leadingNode = this._traversToIndex(index - 1);
     const nodeToRemove = leadingNode.next;
 
@@ -91,6 +103,7 @@ class LinkedList {
     if (leadingNode.next === null) {
       this.tail = leadingNode;
     }
+    return nodeToRemove;
   }
 
   // helper method
@@ -129,6 +142,7 @@ linkedList.append("D"); // 3
 
 linkedList.print();
 
+linkedList.remove(0);
 linkedList.remove(2);
 
 linkedList.print();
